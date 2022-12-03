@@ -1,4 +1,4 @@
-package com.atriki.aoc2022.solutions;
+package com.atriki.aoc2022.solutions.day3;
 
 import com.atriki.aoc2022.Day;
 

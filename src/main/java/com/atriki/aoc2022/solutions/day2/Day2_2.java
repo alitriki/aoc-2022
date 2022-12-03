@@ -1,8 +1,10 @@
-package com.atriki.aoc2022.solutions;
+package com.atriki.aoc2022.solutions.day2;
 
 import com.atriki.aoc2022.Day;
 
 public class Day2_2 extends Day<Integer> {
+
+    public static final String ERROR_MESSAGE = "wuuuuut ?";
 
     public Day2_2() {
         super(2);
@@ -24,7 +26,7 @@ public class Day2_2 extends Day<Integer> {
             case "X" -> Shape.valueOf(opponentShape.getDefeats());
             case "Y" -> opponentShape;
             case "Z" -> Shape.valueOf(opponentShape.getLoosesTo());
-            default -> throw new IllegalArgumentException("wuuuuut ?");
+            default -> throw new IllegalArgumentException(ERROR_MESSAGE);
 
         };
 
@@ -35,7 +37,7 @@ public class Day2_2 extends Day<Integer> {
             case "X" -> 0;
             case "Y" -> 3;
             case "Z" -> 6;
-            default -> throw new IllegalArgumentException("wuuuuut ?");
+            default -> throw new IllegalArgumentException(ERROR_MESSAGE);
         };
     }
 
@@ -73,7 +75,7 @@ public class Day2_2 extends Day<Integer> {
                 case "A" -> ROCK;
                 case "B" -> PAPER;
                 case "C" -> SCISSORS;
-                default -> throw new IllegalArgumentException("wuuuuut ?");
+                default -> throw new IllegalArgumentException(ERROR_MESSAGE);
             };
         }
     }
