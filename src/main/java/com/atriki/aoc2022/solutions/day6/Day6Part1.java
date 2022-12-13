@@ -2,9 +2,9 @@ package com.atriki.aoc2022.solutions.day6;
 
 import com.atriki.aoc2022.Day;
 
-public class Day6_1 extends Day<Integer> {
+public class Day6Part1 extends Day<Integer> {
 
-    public Day6_1() {
+    public Day6Part1() {
         super(6);
     }
 

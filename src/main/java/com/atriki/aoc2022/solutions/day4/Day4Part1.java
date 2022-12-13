@@ -6,19 +6,20 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class Day4_2 extends Day<Integer> {
+public class Day4Part1 extends Day<Integer> {
 
-    public Day4_2() {
+    public Day4Part1() {
         super(4);
     }
 
     @Override
     public Integer process() {
+
         return allLines().stream()
                 .map(line -> line.split(","))
                 .map(
                         sections ->
-                                isOneAssignmentRangeOverlapingWithTheOther(
+                                isOneAssignmentRangeFullyContainedInTheOther(
                                         getElfSectionIds(sections[0]),
                                         getElfSectionIds(sections[1])
                                 ) ? 1 : 0
@@ -26,8 +27,8 @@ public class Day4_2 extends Day<Integer> {
                 .reduce(0, Integer::sum);
     }
 
-    private static boolean isOneAssignmentRangeOverlapingWithTheOther(Set<Integer> firstElfSectionIds, Set<Integer> secondElfSectionIds) {
-        return firstElfSectionIds.stream().anyMatch(secondElfSectionIds::contains);
+    private static boolean isOneAssignmentRangeFullyContainedInTheOther(Set<Integer> firstElfSectionIds, Set<Integer> secondElfSectionIds) {
+        return firstElfSectionIds.containsAll(secondElfSectionIds) || secondElfSectionIds.containsAll(firstElfSectionIds);
     }
 
     private static Set<Integer> getElfSectionIds(String sectionRange) {

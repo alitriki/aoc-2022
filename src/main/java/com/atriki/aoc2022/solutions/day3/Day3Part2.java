@@ -5,9 +5,9 @@ import com.atriki.aoc2022.Day;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Day3_2 extends Day<Integer> {
+public class Day3Part2 extends Day<Integer> {
 
-    public Day3_2() {
+    public Day3Part2() {
         super(3);
     }
 

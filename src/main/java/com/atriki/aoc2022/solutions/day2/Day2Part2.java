@@ -2,11 +2,11 @@ package com.atriki.aoc2022.solutions.day2;
 
 import com.atriki.aoc2022.Day;
 
-public class Day2_2 extends Day<Integer> {
+public class Day2Part2 extends Day<Integer> {
 
     public static final String ERROR_MESSAGE = "wuuuuut ?";
 
-    public Day2_2() {
+    public Day2Part2() {
         super(2);
     }
 

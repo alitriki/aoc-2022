@@ -7,9 +7,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public class Day5_2 extends Day<String> {
+public class Day5Part1 extends Day<String> {
 
-    public Day5_2() {
+    public Day5Part1() {
         super(5);
     }
 
@@ -18,7 +18,9 @@ public class Day5_2 extends Day<String> {
 
     @Override
     public String process() {
-        List<String> stackLines = allLines().stream().filter(line -> line.contains("[")).collect(Collectors.toList());
+        List<String> stackLines = allLines().stream()
+                .filter(line -> line.contains("["))
+                .collect(Collectors.toList());
         Collections.reverse(stackLines);
 
         String regex = "\\[([^\\]]+)\\]|\\s\\s\\s\\s";
@@ -33,9 +35,15 @@ public class Day5_2 extends Day<String> {
 
         String instructionsRegex = "(\\d+)";
         Pattern instructionsPattern = Pattern.compile(instructionsRegex);
-        allLines().stream().filter(line -> line.startsWith("move")).map(line -> getInstruction(instructionsPattern, line)).forEach(this::executeInstruction);
+        allLines().stream()
+                .filter(line -> line.startsWith("move"))
+                .map(line -> getInstruction(instructionsPattern, line))
+                .forEach(this::executeInstruction);
 
-        return allStacks.stream().map(Stack::peek).map(Object::toString).collect(Collectors.joining());
+        return allStacks.stream()
+                .map(Stack::peek)
+                .map(Object::toString)
+                .collect(Collectors.joining());
     }
 
     private Instruction getInstruction(Pattern instructionsPattern, String line) {
@@ -63,13 +71,14 @@ public class Day5_2 extends Day<String> {
     }
 
     private void executeInstruction(Instruction instruction) {
-        Stack<Character> cratesToMove = new Stack<>();
-        for (int i = 0; i < instruction.number; i++) {
-            cratesToMove.add(allStacks.get(instruction.from).pop());
+        for (int i = 0;
+             i < instruction.number;
+             i++) {
+            Character crate = allStacks.get(instruction.from).pop();
+            allStacks.get(instruction.to).push(crate);
         }
-        Collections.reverse(cratesToMove);
-        allStacks.get(instruction.to).addAll(cratesToMove);
     }
 
-    private record Instruction(int number, int from, int to) {}
+    private record Instruction(int number, int from, int to) {
+    }
 }
